@@ -1,0 +1,40 @@
+.jumbotron {
+    padding: 50px 30px 50px 30px;
+    margin: 20px auto !important;
+    height: 150px !important;
+}
+
+#welcome {
+    color: blue;
+}
+
+h3+.fas {
+    margin-left: 20px;
+    color: chartreuse;
+}
+
+body {
+    padding-top: 30px;
+    z-index: 0;
+}
+
+
+/* fix padding under menu after resize */
+
+@media screen and (max-width: 767px) {
+    body {
+        padding-top: 80px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width: 991px) {
+    body {
+        padding-top: 110px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        padding-top: 30px;
+    }
+}
