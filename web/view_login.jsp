@@ -17,27 +17,22 @@
         <form class="formulario_login" method="POST" action="">
             <div class="formulario_grupo">
                 
-                <label> Usuario</label><br>
-                <input class="formulario_control"name="input_user"type="text"placeholder="Digite su usuario"> &nbsp;
+                <label> Usuario</label>
+                <input name="input_user"type="text"placeholder="Digite su usuario"> &nbsp;
                   </div>
                  <div class="formulario_grupo">
-                     
+                     <br>
                  <label> Contraseña</label><br>
-                 <input class="formulario_control"name="input_password"type="password"placeholder="Digite su contraseña">
+                 <input name="input_password"type="password"placeholder="Digite su contraseña">
                   </div>
-                   <div class="panel_boton">
+                   <div >
                   <input type="submit" name = "boton_login" value = "Aceptar">
-                  </div>
-                 <div class="formulario_grupo">
-               <label>
-                Sea parte de nuestros clientes</label>
                   
-                </div>
-            <div >
-                  <a href ="" class="panel_boton" >Registrarse</a>
-                 </div> 
+                  </div>
                 
-                
+              
+                  
+               
         </form>
     </body>
 </html>
