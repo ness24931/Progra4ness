@@ -12,5 +12,5 @@ import java.io.Serializable;
  * @author ADMIN
  */
 public class Receiver implements Serializable {
-				
+
 }

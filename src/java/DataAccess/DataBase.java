@@ -11,55 +11,55 @@ import java.util.logging.Logger;
 
 public class DataBase {
 
-				private Connection con;
-				private Properties prop;
-				private static DataBase bd;
-				private final String propURL = "properties.properties";
+    private Connection con;
+    private Properties prop;
+    private static DataBase bd;
+    private final String propURL = "properties.properties";
 
-				private DataBase() {
-								try {
-												prop = new Properties();
-												prop.load(getClass().getResourceAsStream(propURL));
-												con = DriverManager.getConnection(getURLCnx(), prop.getProperty("user"), prop.getProperty("pass"));
-								} catch (IOException | SQLException ex) {
-												Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-								}
-				}
+    private DataBase() {
+        try {
+            prop = new Properties();
+            prop.load(getClass().getResourceAsStream(propURL));
+            con = DriverManager.getConnection(getURLCnx(), prop.getProperty("user"), prop.getProperty("pass"));
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-				public static DataBase getInstance() {
-								if (bd == null) {
-												bd = new DataBase();
-								}
-								return bd;
-				}
+    public static DataBase getInstance() {
+        if (bd == null) {
+            bd = new DataBase();
+        }
+        return bd;
+    }
 
-				public String getURLCnx() {
-								return String.format("%s//%s/%s", prop.getProperty("protocol"),
-																prop.getProperty("server_url"), prop.getProperty("database"));
-				}
+    public String getURLCnx() {
+        return String.format("%s//%s/%s", prop.getProperty("protocol"),
+                prop.getProperty("server_url"), prop.getProperty("database"));/*+"?serverTimezone=UTC";*/
+    }
 
-				public Connection getConnection() {
-								return con;
-				}
+    public Connection getConnection() {
+        return con;
+    }
 
-				public void closeConnection() {
-								if (this.con != null) {
-												try {
-																con.close();
-												} catch (SQLException ex) {
-																Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-												}
-								}
-				}
-				
-				public static void main(String[] args ){
-								DataBase bd=DataBase.getInstance();
-								Connection c=bd.getConnection();
-								try {
-												Statement st = c.createStatement();
-												st.execute("insert into identification values(1,'hola bb')");
-								} catch (SQLException ex) {
-												Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-								}
-				}
+    public void closeConnection() {
+        if (this.con != null) {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        DataBase bd = DataBase.getInstance();
+        Connection c = bd.getConnection();
+        try {
+            Statement st = c.createStatement();
+            st.execute("insert into identification values(1,'hola bb')");
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

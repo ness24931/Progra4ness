@@ -14,11 +14,14 @@ import java.util.Optional;
  * @author ADMIN
  */
 public interface I_Product {
-				boolean create(Product p,String owner);
-				List<Product> read(String owner);
-				boolean update(Product p,String owner);
-				Optional<Product> delete(String id,String owner);
+
+    boolean create(Product p, String owner);
+
+    List<Product> read(String owner);
+
+    boolean update(Product p, String owner);
+
+    Optional<Product> delete(String id, String owner);
 //				Optional<Product> search();
-				
-				
+
 }

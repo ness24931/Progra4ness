@@ -3,11 +3,20 @@
     <servlet>
         <servlet-name>Main_Control</servlet-name>
         <servlet-class>Control.Main_Control</servlet-class>
+          
+    </servlet>
+    <servlet>
+        <servlet-name>Login_Controller</servlet-name>
+        <servlet-class>Control.Login_Controller</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Main_Control</servlet-name>
         <url-pattern>/Main_Control</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login_Controller</servlet-name>
+        <url-pattern>/Login_Controller</url-pattern>
+    </servlet-mapping> 
     <session-config>
         <session-timeout>
             30
