@@ -17,9 +17,9 @@ import java.util.logging.Logger;
  */
 public class DAO_Product implements I_Product {
 
-				private final String c = "insert into eif209_2020_p01.product values(0,?,?,?,?)";
-				private final String r = "";
-				private final String u = "";
+				private final String c = "insert into eif209_2020_p01.product values(0,?,?,?,?);";
+				private final String r = "select * from eif209_2020_p01.product where owner=?;";
+				private final String u = "update eif209_2020_p01.product set detail=?,price=?,";
 				private final String d = "";
 
 				@Override
@@ -43,16 +43,16 @@ public class DAO_Product implements I_Product {
 				@Override
 				public List<Product> read(String owner) {
 								return null;
+				}				
+
+				@Override
+				public boolean update(Product p) {
+						return true;		
 				}
 
 				@Override
-				public boolean update(Product p, String owner) {
-								return false;
-				}
-
-				@Override
-				public Optional<Product> delete(String id, String owner) {
-								return null;
+				public boolean delete(int id) {
+								throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 				}
 
 }

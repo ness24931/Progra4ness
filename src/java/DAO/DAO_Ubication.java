@@ -139,20 +139,22 @@ public class DAO_Ubication implements I_Ubication {
 								}
 								List<Ubication> r = dao.read();
 								r.stream().forEach(valor -> System.out.println(valor.getIdUbication()));
-								if (dao.update(new Ubication(5, 4, 2, 2, "direccion actualizada")) == true) {
+								if (dao.update(new Ubication(2, 4, 2, 2, "direccion actualizada")) == true) {
 												System.out.println("actualizado");
+												//leer
 												r = dao.read();
-												r.stream().forEach(valor -> System.out.println(valor.getIdUbication()));
-								}
-								else{
+												r.stream().forEach(valor -> {
+																System.out.println(valor.getIdUbication());
+																System.out.println(valor.getAddress());
+												});
+								} else {
 												System.out.println("el registro a actualizar no existe");
 								}
-								if (dao.delete(1) == true) {
+								if (dao.delete(2) == true) {
 												System.out.println("borrado");
 												r = dao.read();
 												r.stream().forEach(valor -> System.out.println(valor.getIdUbication()));
-								}
-								else{
+								} else {
 												System.out.println("el id a borrar no existe");
 								}
 				}

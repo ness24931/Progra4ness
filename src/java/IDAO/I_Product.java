@@ -16,8 +16,8 @@ import java.util.Optional;
 public interface I_Product {
 				boolean create(Product p,String owner);
 				List<Product> read(String owner);
-				boolean update(Product p,String owner);
-				Optional<Product> delete(String id,String owner);
+				boolean update(Product p);
+				boolean delete(int id);
 //				Optional<Product> search();
 				
 				
