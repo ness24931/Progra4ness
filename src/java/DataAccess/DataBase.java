@@ -20,8 +20,9 @@ public class DataBase {
 								try {
 												prop = new Properties();
 												prop.load(getClass().getResourceAsStream(propURL));
+												Class.forName(prop.getProperty("database_driver"));
 												con = DriverManager.getConnection(getURLCnx(), prop.getProperty("user"), prop.getProperty("pass"));
-								} catch (IOException | SQLException ex) {
+								} catch (IOException | SQLException | ClassNotFoundException ex) {
 												Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
 								}
 				}

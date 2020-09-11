@@ -5,6 +5,8 @@
  */
 package Control;
 
+import DAO.DAO_User;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,13 +32,18 @@ public class Control_Login extends HttpServlet {
 				protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 												throws ServletException, IOException {
 								response.setContentType("text/html;charset=UTF-8");
-								String user=request.getParameter("input_idUser");
-								String pass=request.getParameter("input_password");
-								HttpSession session = request.getSession();
-								session.setAttribute("user", user);
-								request.getRequestDispatcher("view_principal.jsp").forward(request, response);
-								
-								
+								String user = request.getParameter("input_idUser");
+								String pass = request.getParameter("input_password");
+								if (user.isEmpty() || pass.isEmpty()) {
+												response.sendRedirect("index.jsp");
+								} else {
+												DAO_User dao = new DAO_User();
+												if (dao.validate(user, pass)) {
+																request.getRequestDispatcher("view_principal.jsp").forward(request, response);
+												} else {
+																request.getRequestDispatcher("view_singin.jsp").forward(request, response);
+												}
+								}
 				}
 
 				// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
