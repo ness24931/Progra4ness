@@ -4,9 +4,17 @@
         <servlet-name>Main_Control</servlet-name>
         <servlet-class>Control.Main_Control</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Control_Login</servlet-name>
+        <servlet-class>Control.Control_Login</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Main_Control</servlet-name>
         <url-pattern>/Main_Control</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Control_Login</servlet-name>
+        <url-pattern>/Control_Login</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
