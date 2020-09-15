@@ -13,62 +13,62 @@ import java.io.Serializable;
  */
 public class Ubication implements Serializable {
 
-				private int idUbication;
-				private int numProvince;
-				private int numCanton;
-				private int numDistrito;
-				private String address;
+	 private int idUbication;
+	 private String province;
+	 private String canton;
+	 private String distrito;
+	 private String address;
 
-				public Ubication() {
-								this(-1, -1, -1, -1, "");
-				}
+	 public Ubication() {
+			this(0, "", "", "", "");
+	 }
 
-				public Ubication(int idUbication, int numProvince, int numCanton, int numDistrito, String address) {
-								this.idUbication = idUbication;
-								this.numProvince = numProvince;
-								this.numCanton = numCanton;
-								this.numDistrito = numDistrito;
-								this.address = address;
-				}
+	 public Ubication(int idUbication, String province, String canton, String distrito, String address) {
+			this.idUbication = idUbication;
+			this.province = province;
+			this.canton = canton;
+			this.distrito = distrito;
+			this.address = address;
+	 }
 
-				public int getIdUbication() {
-								return idUbication;
-				}
+	 public int getIdUbication() {
+			return idUbication;
+	 }
 
-				public void setIdUbication(int idUbication) {
-								this.idUbication = idUbication;
-				}
-								
-				public int getNumProvince() {
-								return numProvince;
-				}
+	 public void setIdUbication(int idUbication) {
+			this.idUbication = idUbication;
+	 }
 
-				public void setNumProvince(int numProvince) {
-								this.numProvince = numProvince;
-				}
+	 public String getProvince() {
+			return province;
+	 }
 
-				public int getNumCanton() {
-								return numCanton;
-				}
+	 public void setProvince(String province) {
+			this.province = province;
+	 }
 
-				public void setNumCanton(int numCanton) {
-								this.numCanton = numCanton;
-				}
+	 public String getCanton() {
+			return canton;
+	 }
 
-				public int getNumDistrito() {
-								return numDistrito;
-				}
+	 public void setCanton(String canton) {
+			this.canton = canton;
+	 }
 
-				public void setNumDistrito(int numDistrito) {
-								this.numDistrito = numDistrito;
-				}
+	 public String getDistrito() {
+			return distrito;
+	 }
 
-				public String getAddress() {
-								return address;
-				}
+	 public void setDistrito(String distrito) {
+			this.distrito = distrito;
+	 }
 
-				public void setAddress(String address) {
-								this.address = address;
-				}
+	 public String getAddress() {
+			return address;
+	 }
+
+	 public void setAddress(String address) {
+			this.address = address;
+	 }
 
 }
