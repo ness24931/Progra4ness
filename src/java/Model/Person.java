@@ -17,7 +17,7 @@ public class Person implements Serializable {
 	 private String name;
 	 private String telephone;
 	 private String e_mail;
-	 private String tradenamei;
+	 private String tradename;
 	 private int id_type;
 	 private Ubication location;
 	 private User user;
@@ -26,12 +26,13 @@ public class Person implements Serializable {
 			this("", "", "", "", "", -1, null, null);
 	 }
 
-	 public Person(String dni, String name, String telephone, String e_mail, String tradenamei, int id_type, Ubication location, User user) {
+	 public Person(String dni, String name, String telephone, String e_mail, 
+					 String tradename, int id_type, Ubication location, User user) {
 			this.dni = dni;
 			this.name = name;
 			this.telephone = telephone;
 			this.e_mail = e_mail;
-			this.tradenamei = tradenamei;
+			this.tradename = tradename;
 			this.id_type = id_type;
 			this.location = location;
 			this.user = user;
@@ -69,12 +70,12 @@ public class Person implements Serializable {
 			this.e_mail = e_mail;
 	 }
 
-	 public String getTradenamei() {
-			return tradenamei;
+	 public String getTradename() {
+			return tradename;
 	 }
 
-	 public void setTradenamei(String tradenamei) {
-			this.tradenamei = tradenamei;
+	 public void setTradename(String tradename) {
+			this.tradename = tradename;
 	 }
 
 	 public int getId_type() {

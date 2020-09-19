@@ -26,6 +26,11 @@ public class Canton {
 			this.district = new ArrayList<>();
 	 }
 
+	 public Canton(String nombre, List<District> district) {
+			this.nombre = nombre;
+			this.district = district;
+	 }
+
 	 public String getNombre() {
 			return nombre;
 	 }

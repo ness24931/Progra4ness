@@ -28,6 +28,11 @@ public class Province implements Serializable {
 			this.cantons = new ArrayList<>();
 	 }
 
+	 public Province(String name, List<Canton> cantons) {
+			this.name = name;
+			this.cantons = cantons;
+	 }
+
 	 public String getName() {
 			return name;
 	 }

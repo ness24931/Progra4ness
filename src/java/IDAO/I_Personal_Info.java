@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package IDAO;
 
 import Model.Person;
 
-/**
- *
- * @author ADMIN
- */
 public interface I_Personal_Info {
 
 	 public boolean create(Person p);
 
 	 public Person search(String id);
+
+	 public Person searchUser(String user);
 
 	 public boolean update(Person p);
 

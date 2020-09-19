@@ -5,12 +5,21 @@
  */
 package Control;
 
+import DAO.DAO_Personal_Info;
+import DAO.DAO_Ubication;
 import DAO.DAO_User;
+import IDAO.I_Personal_Info;
+import IDAO.I_Ubication;
+import IDAO.I_User;
+import Model.Person;
+import Model.Province;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,10 +35,21 @@ public class Control_Login extends HttpServlet {
 			if (user.isEmpty() || pass.isEmpty()) {
 				 response.sendRedirect("index.jsp");
 			} else {
-				 DAO_User dao = new DAO_User();
+				 I_User dao = new DAO_User();
 				 if (dao.validate(user, pass)) {
-						request.getRequestDispatcher("view_principal.jsp").forward(request, response);
+						I_Personal_Info person = new DAO_Personal_Info();
+						Person p = person.searchUser(user);
+						if (p != null) {
+							 HttpSession session = request.getSession(false);
+							 session.setAttribute("person", p);
+							 request.getRequestDispatcher("view_principal.jsp").forward(request, response);
+						} else {
+							 response.sendRedirect("index.jsp");
+						}
 				 } else {
+						I_Ubication dao_u = new DAO_Ubication();
+						List<Province> provinces = dao_u.provinces();
+						request.setAttribute("provinces", provinces);
 						request.getRequestDispatcher("view_singin.jsp").forward(request, response);
 				 }
 			}
