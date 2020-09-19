@@ -12,6 +12,10 @@
         <servlet-name>Control_Signin</servlet-name>
         <servlet-class>Control.Control_Signin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Control_AddProduct</servlet-name>
+        <servlet-class>Control.Control_AddProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Main_Control</servlet-name>
         <url-pattern>/Main_Control</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Control_Signin</servlet-name>
         <url-pattern>/Control_Signin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Control_AddProduct</servlet-name>
+        <url-pattern>/Control_AddProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

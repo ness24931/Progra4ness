@@ -5,10 +5,8 @@
  */
 package Control;
 
-import DAO.DAO_Categories;
-import IDAO.I_Categories;
-import Model.List.List_category;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-public class Main_Control extends HttpServlet {
+public class Control_AddProduct extends HttpServlet {
 
 	 /**
 	  * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,21 +29,18 @@ public class Main_Control extends HttpServlet {
 	 protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 					 throws ServletException, IOException {
 			response.setContentType("text/html;charset=UTF-8");
-			String option = request.getParameter("btn_option");
-			switch (option) {
-				 case "Agregar Cliente":
-						request.getRequestDispatcher(option);
-						break;
-				 case "Agregar un Producto":
-						I_Categories dao = new DAO_Categories();
-						List_category lista = dao.read();
-						request.setAttribute("lista", lista);
-						request.getRequestDispatcher("view_addProduct.jsp").forward(request, response);
-						break;
-				 default:
-						break;
+			try (PrintWriter out = response.getWriter()) {
+				 /* TODO output your page here. You may use following sample code. */
+				 out.println("<!DOCTYPE html>");
+				 out.println("<html>");
+				 out.println("<head>");
+				 out.println("<title>Servlet Control_AddProduct</title>");				 
+				 out.println("</head>");
+				 out.println("<body>");
+				 out.println("<h1>Servlet Control_AddProduct at " + request.getContextPath() + "</h1>");
+				 out.println("</body>");
+				 out.println("</html>");
 			}
-
 	 }
 
 	 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

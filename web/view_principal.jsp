@@ -19,7 +19,9 @@
 			<div>
 				 <form method = "GET" action = "Main_Control">
 						<input type = "submit"  name = "btn_option" value = "Agregar Cliente">
-						<input type = "submit" name = "btn_option" value = "Agregar un Producto"> 						
+						<input type = "submit" name = "btn_option" value = "Agregar un Producto">
+						<input type = "submit" name = "btn_option" value = "Perfil">
+						<input type = "submit" name = "btn_option" value = "Facturar">
 				 </form>
 			</div>
 	 </body>
