@@ -5,6 +5,7 @@
  */
 package IDAO;
 
+import Model.ListProduct;
 import Model.Product;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +16,7 @@ import java.util.Optional;
  */
 public interface I_Product {
 				boolean create(Product p,String owner);
-				List<Product> read(String owner);
+				ListProduct read(String owner);
 				boolean update(Product p);
 				boolean delete(int id);
 //				Optional<Product> search();

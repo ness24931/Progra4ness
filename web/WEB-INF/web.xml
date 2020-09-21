@@ -16,6 +16,26 @@
         <servlet-name>Control_AddProduct</servlet-name>
         <servlet-class>Control.Control_AddProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Control_AddClient</servlet-name>
+        <servlet-class>Control.Control_AddClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Control_Perfil</servlet-name>
+        <servlet-class>Control.Control_Perfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Control_Facturar</servlet-name>
+        <servlet-class>Control.Control_Facturar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Control_Fac_C</servlet-name>
+        <servlet-class>Control.Control_Fac_C</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Control_Fac_P</servlet-name>
+        <servlet-class>Control.Control_Fac_P</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Main_Control</servlet-name>
         <url-pattern>/Main_Control</url-pattern>
@@ -31,6 +51,26 @@
     <servlet-mapping>
         <servlet-name>Control_AddProduct</servlet-name>
         <url-pattern>/Control_AddProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Control_AddClient</servlet-name>
+        <url-pattern>/Control_AddClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Control_Perfil</servlet-name>
+        <url-pattern>/Control_Perfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Control_Facturar</servlet-name>
+        <url-pattern>/Control_Facturar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Control_Fac_C</servlet-name>
+        <url-pattern>/Control_Fac_C</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Control_Fac_P</servlet-name>
+        <url-pattern>/Control_Fac_P</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

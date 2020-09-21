@@ -5,13 +5,13 @@
  */
 package Control;
 
-import DAO.DAO_Personal_Info;
+import DAO.DAO_Transmitter;
 import DAO.DAO_Ubication;
 import DAO.DAO_User;
-import IDAO.I_Personal_Info;
+import IDAO.I_Transmitter;
 import IDAO.I_Ubication;
 import IDAO.I_User;
-import Model.Person;
+import Model.Transmitter;
 import Model.Ubication;
 import Model.User;
 import java.io.IOException;
@@ -42,21 +42,25 @@ public class Control_Signin extends HttpServlet {
 				 String province = request.getParameter("province");
 				 String canton = request.getParameter("canton");
 				 String district = request.getParameter("district");
+				 String address = "";
 				 if (num_id == "" || name_full == "" || num_tel == "" || mail == ""
 								 || tradename == "" || user == "" || pass == "" || province == "") {
 						String msj = "Todos los campos deben ser rellenados";
 						response.sendRedirect(String.format("error.jsp?error=%s", msj));
 				 } else {
-						Person p = new Person(
-										num_id, name_full, num_tel, mail, tradename, type_id,
-										new Ubication(0, province, canton, district, ""),
-										new User(user, pass));
+						Transmitter emisor = new Transmitter(
+										tradename,
+										new User(user, pass),
+										null, num_id, name_full, num_tel, mail, type_id,
+										new Ubication(
+														0, province, canton, district, address)
+						);
 						I_Ubication ubi = new DAO_Ubication();
-						if (ubi.create(p.getLocation())) {
+						if (ubi.create(emisor.getLocation())) {
 							 I_User i_u = new DAO_User();
-							 if (i_u.create(p.getUser())) {
-									I_Personal_Info info = new DAO_Personal_Info();
-									if (info.create(p)) {
+							 if (i_u.create(emisor.getUser())) {
+									I_Transmitter emi = new DAO_Transmitter();
+									if (emi.create(emisor)) {
 										 response.sendRedirect("error.jsp?error=Registro completo");
 									} else {
 										 response.sendRedirect("error.jsp?error=Error al registrar la info");

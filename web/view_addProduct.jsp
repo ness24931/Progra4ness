@@ -16,17 +16,29 @@
 			<h1>Hello World!</h1>
 			<form action="Control_AddProduct" method="GET">
 				 <%
-						List_category lista = (List_category) request.getAttribute("lista");
+						HttpSession s = request.getSession(false);
+						if (s != null) {
+							 List_category lista = (List_category) s.getAttribute("categories");
 				 %>
-				 <select name="categoria">
+				 <select name="category">
 						<option value="-1">Categoria</option>
 						<%
 							 for (int i = 0; i < lista.size(); i++) {
+									int d = (int) (lista.get(i).getIva() * 100);
 						%>
-						<option value="<%= i%>"><%= lista.get(i).getDescripcion()%></option>
-						<% }%>
+						<option value="<%= i%>">
+							 <%= String.format("%1$s\tIVA: %2$d%3$s",
+											 lista.get(i).getDescripcion(), d, "%")%>
+						</option>
+						<% }
+							 }%>
 				 </select>
-				 <input type="submit" name="bnt_addProduct" value="Agregar Producto">
+				 <label for="txt_detail">Detalle del producto: </label>
+				 <input type="text" id="txt_detail" name="detail">
+				 <label for="txt_price">Precio: </label>
+				 <input type="number" id="txt_price" min="1" name="price">				
+				 <input type="submit" name="bnt_addProduct" value="Agregar Producto">				 
+
 			</form>
 	 </body>
 </html>

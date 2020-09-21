@@ -14,8 +14,12 @@
 	 <body>
 			<%
 				 String msj = request.getParameter("error");
+				 String link = request.getParameter("link");
+				 if (link == null || link.isEmpty()) {
+						link = "index.jsp";
+				 }
 			%>
 			<h1> <%=msj%></h1>
-			<a href="index.jsp">Volver al inicio</a>
+			<a href="<%= link%>">Volver al inicio</a>
 	 </body>
 </html>

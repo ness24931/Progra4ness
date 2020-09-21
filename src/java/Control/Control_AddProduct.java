@@ -5,12 +5,20 @@
  */
 package Control;
 
+import DAO.DAO_Product;
+import DAO.DAO_Transmitter;
+import IDAO.I_Product;
+import IDAO.I_Transmitter;
+import Model.List.List_category;
+import Model.Person;
+import Model.Product;
+import Model.Transmitter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,18 +37,38 @@ public class Control_AddProduct extends HttpServlet {
 	 protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 					 throws ServletException, IOException {
 			response.setContentType("text/html;charset=UTF-8");
-			try (PrintWriter out = response.getWriter()) {
-				 /* TODO output your page here. You may use following sample code. */
-				 out.println("<!DOCTYPE html>");
-				 out.println("<html>");
-				 out.println("<head>");
-				 out.println("<title>Servlet Control_AddProduct</title>");				 
-				 out.println("</head>");
-				 out.println("<body>");
-				 out.println("<h1>Servlet Control_AddProduct at " + request.getContextPath() + "</h1>");
-				 out.println("</body>");
-				 out.println("</html>");
-			}
+			String detail = request.getParameter("detail");
+			int category = Integer.valueOf(request.getParameter("category"));
+			float price = Float.valueOf(request.getParameter("price"));
+//			 ? categoria = 1 & detail =  & price =  & bnt_addProduct = Agregar + Producto;
+			I_Product dao = new DAO_Product();
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				 Transmitter emisor = (Transmitter) session.getAttribute("emisor");
+				 if (emisor != null) {
+						List_category categories = (List_category) session.getAttribute("categories");
+						Product product = new Product(-1, detail, price, categories.get(category));
+						if (dao.create(product, emisor.getDni())) {
+//							 if (product.getId() != -1) {
+//									I_Transmitter i_t = new DAO_Transmitter();
+//									System.out.println(product.getId());
+//									if (i_t.create(emisor, product)) {
+										 response.sendRedirect("error.jsp?error=Ingresado&link=view_addProduct.jsp");
+									} else {
+										 response.sendRedirect("error.jsp?error=No se pudo relacionar su producto a su cuenta"
+														 + "&link=view_addProduct.jsp");
+									}
+							 } else {
+									response.sendRedirect("error.jsp?error=El emisor no se encuentra"
+													+ "&link=view_addProduct.jsp");
+							 }
+						} else {
+							 response.sendRedirect("error.jsp?error=Error en sesion&link=view_addProduct.jsp");
+						}
+//				 }
+//				 List_category lista = (List_category) request.getAttribute("lista");
+//			}
+
 	 }
 
 	 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

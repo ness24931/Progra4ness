@@ -6,7 +6,6 @@
 package DAO;
 
 import DataAccess.DataBase;
-import IDAO.I_Personal_Info;
 import Model.Person;
 import Model.Ubication;
 import Model.User;
@@ -15,24 +14,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import IDAO.I_Person;
+import Model.List.List_Clients;
 
 /**
  *
  * @author ADMIN
  */
-public class DAO_Personal_Info implements I_Personal_Info {
+public class DAO_Person implements I_Person {
 
-	 private String create = "insert into personal_info values(?,?,?,?,?,?,?,?);";
+	 private String create = "insert into receiver values(?,?,?,?,?,?,?);";
 	 private String search = "select * from personal_info where dni=?;";
 	 private String update = "update personal_info set name = ?, telephone =?, e-mail =?, tradename =?, location int \n"
 					 + "id_type int \n"
 					 + "user ?,?,?,?,?,?,?,?);";
-	 private String searchUser = "SELECT * FROM eif209_2020_p01.personal_info p inner join "
-					 + "ubication l on p.location = l.idUbication right join "
-					 + "identification i on p.id_type = i.Tipo where p.user=?;";
+	 private String searchClient = "SELECT * FROM eif209_2020_p01.receiver r inner join "
+					 + "ubication u on r.location = u.idUbication and r.transmitter_owner = ?;";
 
 	 @Override
-	 public boolean create(Person p) {
+	 public boolean create(Person p, String owner) {
 			PreparedStatement ps = null;
 			DataBase db = DataBase.getInstance();
 			try {
@@ -41,15 +41,14 @@ public class DAO_Personal_Info implements I_Personal_Info {
 				 ps.setString(2, p.getName());
 				 ps.setString(3, p.getTelephone());
 				 ps.setString(4, p.getE_mail());
-				 ps.setString(5, p.getTradename());
-				 ps.setInt(6, p.getLocation().getIdUbication());
-				 ps.setInt(7, p.getId_type());
-				 ps.setString(8, p.getUser().getUser());
+				 ps.setInt(5, p.getLocation().getIdUbication());
+				 ps.setInt(6, p.getId_type());
+				 ps.setString(7, owner);
 				 if (ps.executeUpdate() > 0) {
 						return true;
 				 }
 			} catch (SQLException ex) {
-				 Logger.getLogger(DAO_Personal_Info.class.getName()).log(Level.SEVERE, null, ex);
+				 Logger.getLogger(DAO_Person.class.getName()).log(Level.SEVERE, null, ex);
 			}
 			return false;
 	 }
@@ -70,35 +69,39 @@ public class DAO_Personal_Info implements I_Personal_Info {
 	 }
 
 	 @Override
-	 public Person searchUser(String user) {
+	 public List_Clients searchClients(String owner) {
+			List_Clients clientes = new List_Clients();
 			PreparedStatement ps = null;
 			DataBase db = DataBase.getInstance();
 			ResultSet rs = null;
-			Person person = null;
 			try {
-				 ps = db.getConnection().prepareStatement(this.searchUser);
-				 ps.setString(1, user);
+				 ps = db.getConnection().prepareStatement(this.searchClient);
+				 ps.setString(1, owner);
 				 rs = ps.executeQuery();
-				 if (rs.next()) {
-						person = new Person(
-										rs.getString("dni"),
-										rs.getString("name"),
-										rs.getString("telephone"),
-										rs.getString("e-mail"),
-										rs.getString("tradename"),
-										rs.getInt("id_type"),
-										new Ubication(
-														rs.getInt("idUbication"),
-														rs.getString("nomProvince"),
-														rs.getString("nomCanton"),
-														rs.getString("nomDistrito"),
-														rs.getString("address")),
-										new User(user, ""));
+				 while (rs.next()) {
+						clientes.getClientes().add(
+										new Person(
+														rs.getString(1),
+														rs.getString(2),
+														rs.getString(3),
+														rs.getString(4),
+														rs.getInt(6),
+														new Ubication(
+																		rs.getInt(8),
+																		rs.getString(9),
+																		rs.getString(10),
+																		rs.getString(11),
+																		rs.getString(12))
+										));
 				 }
 			} catch (SQLException ex) {
-				 Logger.getLogger(DAO_Personal_Info.class.getName()).log(Level.SEVERE, null, ex);
+				 Logger.getLogger(DAO_Person.class.getName()).log(Level.SEVERE, null, ex);
 			}
-			return person;
+			if (clientes.getClientes().isEmpty()) {
+				 return null;
+			} else {
+				 return clientes;
+			}
 	 }
 
 }

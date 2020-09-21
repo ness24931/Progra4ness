@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/src/java/Control/Control_Login.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/web/view_principal.jsp</file>
-            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/src/java/DAO/DAO_Personal_Info.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/src/java/IDAO/I_Personal_Info.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/src/java/Model/Person.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/src/java/Control/Main_Control.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/src/java/Control/Control_Fac_C.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/web/view_facturar/view_list_client.jsp</file>
+            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/web/view_facturar/view_fact_prod.jsp</file>
+            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/src/java/Control/Control_AddClient.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/ProyectosNetbeans/Progra%204.2/Progra4ness/src/java/Model/Factura.java</file>
         </group>
     </open-files>
 </project-private>

@@ -14,7 +14,7 @@
 	 <body>
 			<h1>Registro</h1>
 			<div>
-				 <form action="Control_Signin" method="GET">
+				 <form action="Control_Signin" method="POST">
 						<select name="type_id" value="Tipo de identificación">
 							 <option value="1">Física</option>
 							 <option value="2">Jurídica</option>

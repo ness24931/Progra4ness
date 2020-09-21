@@ -1,3 +1,4 @@
+<%@page import="Model.Transmitter"%>
 <%@page import="Model.Person"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,11 +9,11 @@
 	 </head>
 	 <body>
 			<%
-				 Person p = (Person) request.getSession(false).getAttribute("person");
-				 if (p != null) {
+				 Transmitter emisor = (Transmitter) request.getSession(false).getAttribute("emisor");
+				 if (emisor != null) {
 			%>
 
-			<h1>Hello <%= p.getName()%> </h1>
+			<h1>Hello <%= emisor.getName()%> </h1>
 			<% } else {
 						response.sendRedirect(String.format("error.jsp?error=%s", "No se pudo ingresar"));
 				 }%>

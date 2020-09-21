@@ -6,13 +6,18 @@
 package Control;
 
 import DAO.DAO_Categories;
+import DAO.DAO_Person;
 import IDAO.I_Categories;
+import IDAO.I_Person;
+import Model.List.List_Clients;
 import Model.List.List_category;
+import Model.Transmitter;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,15 +37,30 @@ public class Main_Control extends HttpServlet {
 					 throws ServletException, IOException {
 			response.setContentType("text/html;charset=UTF-8");
 			String option = request.getParameter("btn_option");
+			HttpSession session = request.getSession(false);
 			switch (option) {
 				 case "Agregar Cliente":
-						request.getRequestDispatcher(option);
+						request.getRequestDispatcher("view_add_client.jsp").forward(request, response);
 						break;
 				 case "Agregar un Producto":
 						I_Categories dao = new DAO_Categories();
 						List_category lista = dao.read();
-						request.setAttribute("lista", lista);
+						session.setAttribute("categories", lista);
+//						request.setAttribute("lista", lista);
 						request.getRequestDispatcher("view_addProduct.jsp").forward(request, response);
+						break;
+				 case "Perfil":
+
+						break;
+				 case "Facturar":
+						Transmitter emisor = (Transmitter) session.getAttribute("emisor");
+						if (emisor != null) {
+							 I_Person daoP = new DAO_Person();
+							 List_Clients clientes = daoP.searchClients(emisor.getDni());
+//							 request.setAttribute("list_clients", clientes);
+							 session.setAttribute("list_clients", clientes);
+							 request.getRequestDispatcher("view_facturar/view_list_client.jsp").forward(request, response);
+						}
 						break;
 				 default:
 						break;
